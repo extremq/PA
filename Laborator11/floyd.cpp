@@ -5,11 +5,19 @@ const int INF = 100000;
 int pred[100][100];
 int dist[100][100];
 
+void print_path(int i, int j) {
+    if (i != j)
+        print_path(i, pred[i][j]);
+    std::cout << j << " ";
+}
+
 int main () {
     int vertices = 0;
     int edges = 0;
+    int start, end;
 
     std::cin >> vertices >> edges;
+    std::cin >> start >> end;
     // Predecesori
     for (int i = 0; i < vertices; ++i)
         for (int j = 0; j < vertices; ++j) {
@@ -58,4 +66,6 @@ int main () {
         }   
         std::cout << '\n';
     }
+
+    print_path(start, end);
 }
